@@ -16,14 +16,7 @@ methodmap Entity
 
 	property int EntIndex
 	{
-		public get()
-		{
-			return EntRefToEntIndex( _:this );
-		};
-		public set( int index )
-		{
-			this = Entity:EntIndexToEntRef( index );
-		};
+		public get() { return EntRefToEntIndex( _:this ); };
 	};;
 
 	property bool IsValid
