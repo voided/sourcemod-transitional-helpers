@@ -19,6 +19,7 @@
 #pragma newdecls required
 
 #include "thelpers_entity.inc"
+#include "thelpers_client.inc"
 
 // reset
 #pragma newdecls optional
