@@ -24,3 +24,9 @@ methodmap Client < Entity
 		public get() { return GetClientUserId( this.Index ); };
 	};;
 };
+
+stock Client Client_FromUserId( int userid )
+{
+	int clientIndex = GetClientOfUserId( userid );
+	return Client( clientIndex );
+}
