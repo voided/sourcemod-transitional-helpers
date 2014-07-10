@@ -49,9 +49,9 @@ methodmap Entity
 	{
 		GetEntPropVector( this.Ref, propType, propName, vec, element );
 	};
-	public void GetPropString( PropType propType, const char[] propName, char[] buffer, int maxBuffer, int element = 0 )
+	public int GetPropString( PropType propType, const char[] propName, char[] buffer, int maxBuffer, int element = 0 )
 	{
-		GetEntPropString( this.Ref, propType, propName, buffer, maxBuffer, element );
+		return GetEntPropString( this.Ref, propType, propName, buffer, maxBuffer, element );
 	};
 
 	public void SetProp( PropType propType, const char[] propName, int value, int size = 4, int element = 0 )
