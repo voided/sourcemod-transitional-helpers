@@ -13,6 +13,7 @@
 // include what thelpers requires
 #include <sdktools>
 #include <halflife>
+#include <tf2>
 
 
 // require transitional api for our includes
@@ -20,6 +21,7 @@
 
 #include "thelpers_entity.inc"
 #include "thelpers_client.inc"
+#include "thelpers_tf2.inc"
 
 // reset
 #pragma newdecls optional
