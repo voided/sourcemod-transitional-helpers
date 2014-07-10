@@ -30,8 +30,20 @@ methodmap Client < Entity
 	};;
 };
 
+
 stock Client Client_FromUserId( int userid )
 {
 	int clientIndex = GetClientOfUserId( userid );
 	return Client( clientIndex );
+}
+
+
+stock bool operator==( Client oper1, Entity oper2 )
+{
+	return Entity:oper1 == oper2;
+}
+
+stock bool operator!=( Client oper1, Entity oper2 )
+{
+	return !( oper1 == oper2 );
 }

@@ -196,3 +196,14 @@ stock Entity Entity_FindByClassname( Entity startEnt, const char[] className )
 	int entIndex = FindEntityByClassname( startEnt.Ref, className );
 	return Entity( entIndex );
 }
+
+
+stock bool operator==( Entity oper1, Entity oper2 )
+{
+	return oper1.Ref == oper2.Ref;
+}
+
+stock bool operator!=( Entity oper1, Entity oper2 )
+{
+	return !( oper1 == oper2 );
+}

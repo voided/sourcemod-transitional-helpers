@@ -29,3 +29,14 @@ methodmap TFObject < Entity
 		public get() { return this.GetProp( Prop_Send, "m_iUpgradeLevel" ); };
 	};;
 };
+
+
+stock bool operator==( TFObject oper1, Entity oper2 )
+{
+	return Entity:oper1 == oper2;
+}
+
+stock bool operator!=( TFObject oper1, Entity oper2 )
+{
+	return !( oper1 == oper2 );
+}
