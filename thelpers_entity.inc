@@ -162,10 +162,10 @@ methodmap Entity
 		SetVariantString( "!activator" );
 		this.AcceptInput( "SetParent", parent );
 	};
-	public void SetParentAttachment( Entity parent, const char[] attachmentName )
+	public void SetParentAttachment( const char[] attachmentName )
 	{
 		SetVariantString( attachmentName );
-		this.AcceptInput( "SetParentAttachment", parent );
+		this.AcceptInput( "SetParentAttachment" );
 	};
 };
 
