@@ -170,6 +170,15 @@ methodmap Entity
 		SetVariantString( attachmentName );
 		this.AcceptInput( "SetParentAttachment" );
 	};
+
+	public Entity GetParent()
+	{
+		return this.GetPropEnt( Prop_Data, "m_pParent" );
+	};
+	public Entity GetMoveParent()
+	{
+		return this.GetPropEnt( Prop_Send, "moveparent" );
+	};
 };
 
 stock Entity Entity_CreateByName( const char[] className, int forceEdictIndex = -1 )
