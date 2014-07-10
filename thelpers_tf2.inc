@@ -8,6 +8,12 @@
 
 methodmap TFObject < Entity
 {
+	public TFObject( int entIndex )
+	{
+		return TFObject:Entity( entIndex );
+	};
+
+
 	property Client Builder
 	{
 		public get() { return Client:this.GetPropEnt( Prop_Send, "m_hBuilder" ); };

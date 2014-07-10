@@ -8,6 +8,12 @@
 
 methodmap Client < Entity
 {
+	public Client( int clientIndex )
+	{
+		return Client:Entity( clientIndex );
+	};
+
+
 	property int Team
 	{
 		public get() { return GetClientTeam( this.Index ); };
