@@ -181,8 +181,18 @@ methodmap Entity
 	};
 };
 
+
+/*const*/ Entity INVALID_ENTITY = Entity:INVALID_ENT_REFERENCE;
+
+
 stock Entity Entity_CreateByName( const char[] className, int forceEdictIndex = -1 )
 {
 	int entIndex = CreateEntityByName( className, forceEdictIndex );
+	return Entity( entIndex );
+}
+
+stock Entity Entity_FindByClassname( Entity startEnt, const char[] className )
+{
+	int entIndex = FindEntityByClassname( startEnt.Ref, className );
 	return Entity( entIndex );
 }
