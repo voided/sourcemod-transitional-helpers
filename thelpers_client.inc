@@ -10,6 +10,11 @@ methodmap Client < Entity
 {
 	public Client( int clientIndex )
 	{
+		if ( clientIndex == 0 )
+		{
+			return Client:INVALID_ENTITY;
+		}
+		
 		return Client:Entity( clientIndex );
 	};
 
