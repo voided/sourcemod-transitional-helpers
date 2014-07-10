@@ -72,6 +72,20 @@ methodmap Entity
 		return SetEntPropString( this.Ref, propType, propName, buffer );
 	};
 
+
+	property int Skin
+	{
+		public get() { return this.GetProp( Prop_Send, "m_nSkin" ); };
+		public set( int skin ) { this.SetProp( Prop_Send, "m_nSkin", skin ); };
+	};;
+
+	property float ModelScale
+	{
+		public get() { return this.GetPropFloat( Prop_Send, "m_flModelScale" ); };
+		public set( float scale ) { this.SetPropFloat( Prop_Send, "m_flModelScale", scale ); };
+	};;
+
+
 	public void SetModel( const char[] model )
 	{
 		SetEntityModel( this.Ref, model );
@@ -141,6 +155,17 @@ methodmap Entity
 	public bool AcceptInput( const char[] input, Entity activator = Entity:-1, Entity caller = Entity:-1, int outputid = 0 )
 	{
 		return AcceptEntityInput( this.Ref, input, activator.Ref, caller.Ref, outputid );
+	};
+
+	public void SetParent( Entity parent )
+	{
+		SetVariantString( "!activator" );
+		this.AcceptInput( "SetParent", parent );
+	};
+	public void SetParentAttachment( Entity parent, const char[] attachmentName )
+	{
+		SetVariantString( attachmentName );
+		this.AcceptInput( "SetParentAttachment", parent );
 	};
 };
 
