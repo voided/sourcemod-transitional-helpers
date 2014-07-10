@@ -29,77 +29,6 @@ methodmap Entity
 	};;
 
 
-	public void SetModel( const char[] model )
-	{
-		SetEntityModel( this.Ref, model );
-	};
-	public int GetModel( char[] buffer, int maxBuffer )
-	{
-		return this.GetPropString( Prop_Data, "m_ModelName", buffer, maxBuffer );
-	};
-
-	public void GetLocalOrigin( float vec[ 3 ] )
-	{
-		this.GetPropVector( Prop_Send, "m_vecOrigin", vec );
-	}
-	public void SetLocalOrigin( const float vec[ 3 ] )
-	{
-		this.SetPropVector( Prop_Send, "m_vecOrigin", vec );
-	}
-	public void GetLocalAngles( float ang[ 3 ] )
-	{
-		this.GetPropVector( Prop_Send, "m_angRotation", ang ;)
-	}
-	public void SetLocalAngles( const float ang[ 3 ] )
-	{
-		this.SetPropVector( Prop_Send, "m_angRotation", ang );
-	}
-
-	public void GetAbsOrigin( float vec[ 3 ] )
-	{
-		this.GetPropVector( Prop_Data, "m_vecAbsOrigin", vec );
-	}
-	public void SetAbsOrigin( const float vec[ 3 ] )
-	{
-		this.SetPropVector( Prop_Data, "m_vecAbsOrigin", vec );
-	}
-	public void GetAbsAngles( float ang[ 3 ] )
-	{
-		this.GetPropVector( Prop_Data, "m_angAbsRotation", ang );
-	}
-	public void SetAbsAngles( const float ang[ 3 ] )
-	{
-		this.SetPropVector( Prop_Data, "m_angAbsRotation", ang );
-	}
-
-	public bool Spawn()
-	{
-		return DispatchSpawn( this.Ref );
-	};
-
-	public void Teleport( const float origin[ 3 ], const float angles[ 3 ], const float velocity[ 3 ] )
-	{
-		TeleportEntity( this.Ref, origin, angles, velocity );
-	}
-
-	public bool KeyValue( const char[] keyName, const char[] value )
-	{
-		return DispatchKeyValue( this.Ref, keyName, value );
-	};
-	public bool KeyValueFloat( const char[] keyName, float value )
-	{
-		return DispatchKeyValueFloat( this.Ref, keyName, value );
-	};
-	public bool KeyValueVector( const char[] keyName, const float vec[ 3 ] )
-	{
-		return DispatchKeyValueVector( this.Ref, keyName, vec );
-	};
-
-	public bool AcceptInput( const char[] input, Entity activator = Entity:-1, Entity caller = Entity:-1, int outputid = 0 )
-	{
-		return AcceptEntityInput( this.Ref, input, activator.Ref, caller.Ref, outputid );
-	};
-
 	public int GetProp( PropType propType, const char[] propName, int size = 4, int element = 0 )
 	{
 		return GetEntProp( this.Ref, propType, propName, size, element );
@@ -141,6 +70,77 @@ methodmap Entity
 	public int SetPropString( PropType propType, const char[] propName, const char[] buffer )
 	{
 		return SetEntPropString( this.Ref, propType, propName, buffer );
+	};
+
+	public void SetModel( const char[] model )
+	{
+		SetEntityModel( this.Ref, model );
+	};
+	public int GetModel( char[] buffer, int maxBuffer )
+	{
+		return this.GetPropString( Prop_Data, "m_ModelName", buffer, maxBuffer );
+	};
+
+	public void GetLocalOrigin( float vec[ 3 ] )
+	{
+		this.GetPropVector( Prop_Send, "m_vecOrigin", vec );
+	};
+	public void SetLocalOrigin( const float vec[ 3 ] )
+	{
+		this.SetPropVector( Prop_Send, "m_vecOrigin", vec );
+	};
+	public void GetLocalAngles( float ang[ 3 ] )
+	{
+		this.GetPropVector( Prop_Send, "m_angRotation", ang );
+	};
+	public void SetLocalAngles( const float ang[ 3 ] )
+	{
+		this.SetPropVector( Prop_Send, "m_angRotation", ang );
+	};
+
+	public void GetAbsOrigin( float vec[ 3 ] )
+	{
+		this.GetPropVector( Prop_Data, "m_vecAbsOrigin", vec );
+	};
+	public void SetAbsOrigin( const float vec[ 3 ] )
+	{
+		this.SetPropVector( Prop_Data, "m_vecAbsOrigin", vec );
+	};
+	public void GetAbsAngles( float ang[ 3 ] )
+	{
+		this.GetPropVector( Prop_Data, "m_angAbsRotation", ang );
+	};
+	public void SetAbsAngles( const float ang[ 3 ] )
+	{
+		this.SetPropVector( Prop_Data, "m_angAbsRotation", ang );
+	};
+
+	public bool Spawn()
+	{
+		return DispatchSpawn( this.Ref );
+	};
+
+	public void Teleport( const float origin[ 3 ], const float angles[ 3 ], const float velocity[ 3 ] )
+	{
+		TeleportEntity( this.Ref, origin, angles, velocity );
+	};
+
+	public bool KeyValue( const char[] keyName, const char[] value )
+	{
+		return DispatchKeyValue( this.Ref, keyName, value );
+	};
+	public bool KeyValueFloat( const char[] keyName, float value )
+	{
+		return DispatchKeyValueFloat( this.Ref, keyName, value );
+	};
+	public bool KeyValueVector( const char[] keyName, const float vec[ 3 ] )
+	{
+		return DispatchKeyValueVector( this.Ref, keyName, vec );
+	};
+
+	public bool AcceptInput( const char[] input, Entity activator = Entity:-1, Entity caller = Entity:-1, int outputid = 0 )
+	{
+		return AcceptEntityInput( this.Ref, input, activator.Ref, caller.Ref, outputid );
 	};
 };
 
