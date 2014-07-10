@@ -10,6 +10,9 @@ methodmap Entity
 {
 	public Entity( int entIndex )
 	{
+		if ( !IsValidEntity( entIndex ) )
+			return Entity:INVALID_ENT_REFERENCE;
+
 		return Entity:EntIndexToEntRef( entIndex );
 	};
 
