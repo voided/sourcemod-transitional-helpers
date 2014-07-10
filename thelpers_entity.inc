@@ -14,58 +14,133 @@ methodmap Entity
 	};
 
 
-	property int EntIndex
+	property int Index
 	{
 		public get() { return EntRefToEntIndex( _:this ); };
+	};;
+	property int Ref
+	{
+		public get() { return _:this; };
 	};;
 
 	property bool IsValid
 	{
-		public get() { return IsValidEntity( _:this ); };
+		public get() { return IsValidEntity( this.Ref ); };
 	};;
 
 
+	public void SetModel( const char[] model )
+	{
+		SetEntityModel( this.Ref, model );
+	};
+	public int GetModel( char[] buffer, int maxBuffer )
+	{
+		return this.GetPropString( Prop_Data, "m_ModelName", buffer, maxBuffer );
+	};
+
+	public void GetLocalOrigin( float vec[ 3 ] )
+	{
+		this.GetPropVector( Prop_Send, "m_vecOrigin", vec );
+	}
+	public void SetLocalOrigin( const float vec[ 3 ] )
+	{
+		this.SetPropVector( Prop_Send, "m_vecOrigin", vec );
+	}
+	public void GetLocalAngles( float ang[ 3 ] )
+	{
+		this.GetPropVector( Prop_Send, "m_angRotation", ang ;)
+	}
+	public void SetLocalAngles( const float ang[ 3 ] )
+	{
+		this.SetPropVector( Prop_Send, "m_angRotation", ang );
+	}
+
+	public void GetAbsOrigin( float vec[ 3 ] )
+	{
+		this.GetPropVector( Prop_Data, "m_vecAbsOrigin", vec );
+	}
+	public void SetAbsOrigin( const float vec[ 3 ] )
+	{
+		this.SetPropVector( Prop_Data, "m_vecAbsOrigin", vec );
+	}
+	public void GetAbsAngles( float ang[ 3 ] )
+	{
+		this.GetPropVector( Prop_Data, "m_angAbsRotation", ang );
+	}
+	public void SetAbsAngles( const float ang[ 3 ] )
+	{
+		this.SetPropVector( Prop_Data, "m_angAbsRotation", ang );
+	}
+
+	public bool Spawn()
+	{
+		return DispatchSpawn( this.Ref );
+	};
+
+	public void Teleport( const float origin[ 3 ], const float angles[ 3 ], const float velocity[ 3 ] )
+	{
+		TeleportEntity( this.Ref, origin, angles, velocity );
+	}
+
+	public bool KeyValue( const char[] keyName, const char[] value )
+	{
+		return DispatchKeyValue( this.Ref, keyName, value );
+	};
+	public bool KeyValueFloat( const char[] keyName, float value )
+	{
+		return DispatchKeyValueFloat( this.Ref, keyName, value );
+	};
+	public bool KeyValueVector( const char[] keyName, const float vec[ 3 ] )
+	{
+		return DispatchKeyValueVector( this.Ref, keyName, vec );
+	};
+
+	public bool AcceptInput( const char[] input, Entity activator = Entity:-1, Entity caller = Entity:-1, int outputid = 0 )
+	{
+		return AcceptEntityInput( this.Ref, input, activator.Ref, caller.Ref, outputid );
+	};
+
 	public int GetProp( PropType propType, const char[] propName, int size = 4, int element = 0 )
 	{
-		return GetEntProp( _:this, propType, propName, size, element );
+		return GetEntProp( this.Ref, propType, propName, size, element );
 	};
 	public float GetPropFloat( PropType propType, const char[] propName, int element = 0 )
 	{
-		return GetEntPropFloat( _:this, propType, propName, element );
+		return GetEntPropFloat( this.Ref, propType, propName, element );
 	};
 	public Entity GetPropEnt( PropType propType, const char[] propName, int element = 0 )
 	{
-		int entIndex = GetEntPropEnt( _:this, propType, propName, element );
+		int entIndex = GetEntPropEnt( this.Ref, propType, propName, element );
 		return Entity( entIndex );
 	};
 	public void GetPropVector( PropType propType, const char[] propName, float vec[ 3 ], int element = 0 )
 	{
-		GetEntPropVector( _:this, propType, propName, vec, element );
+		GetEntPropVector( this.Ref, propType, propName, vec, element );
 	};
 	public void GetPropString( PropType propType, const char[] propName, char[] buffer, int maxBuffer, int element = 0 )
 	{
-		GetEntPropString( _:this, propType, propName, buffer, maxBuffer, element );
+		GetEntPropString( this.Ref, propType, propName, buffer, maxBuffer, element );
 	};
 
 	public void SetProp( PropType propType, const char[] propName, int value, int size = 4, int element = 0 )
 	{
-		SetEntProp( _:this, propType, propName, value, size, element );
+		SetEntProp( this.Ref, propType, propName, value, size, element );
 	};
 	public void SetPropFloat( PropType propType, const char[] propName, float value, int element = 0 )
 	{
-		SetEntPropFloat( _:this, propType, propName, value, element );
+		SetEntPropFloat( this.Ref, propType, propName, value, element );
 	};
 	public void SetPropEnt( PropType propType, const char[] propName, Entity value, int element = 0 )
 	{
-		SetEntPropEnt( _:this, propType, propName, value, element );
+		SetEntPropEnt( this.Ref, propType, propName, value, element );
 	};
 	public void SetPropVector( PropType propType, const char[] propName, const float vec[ 3 ], int element = 0 )
 	{
-		SetEntPropVector( _:this, propType, propName, vec, eleemnt );
+		SetEntPropVector( this.Ref, propType, propName, vec, eleemnt );
 	};
 	public int SetPropString( PropType propType, const char[] propName, const char[] buffer )
 	{
-		return SetEntPropString( _:this, propType, propName, buffer );
+		return SetEntPropString( this.Ref, propType, propName, buffer );
 	};
 };
 
