@@ -28,6 +28,11 @@ methodmap TFObject < Entity
 	{
 		public get() { return this.GetProp( Prop_Send, "m_iUpgradeLevel" ); };
 	};;
+
+	property bool IsMiniBuilding
+	{
+		public get() { return this.GetProp( Prop_Send, "m_bMiniBuilding" ) == 1; };
+	};;
 };
 
 
