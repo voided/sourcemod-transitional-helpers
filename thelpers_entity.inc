@@ -6,14 +6,14 @@
 #define __thelpers_entity_included
 
 
-methodmap Entity
+methodmap CBaseEntity
 {
-	public Entity( int entIndex )
+	public CBaseEntity( int entIndex )
 	{
 		if ( !IsValidEntity( entIndex ) )
-			return Entity:INVALID_ENT_REFERENCE;
+			return CBaseEntity:INVALID_ENT_REFERENCE;
 
-		return Entity:EntIndexToEntRef( entIndex );
+		return CBaseEntity:EntIndexToEntRef( entIndex );
 	};
 
 
@@ -40,10 +40,10 @@ methodmap Entity
 	{
 		return GetEntPropFloat( this.Ref, propType, propName, element );
 	};
-	public Entity GetPropEnt( PropType propType, const char[] propName, int element = 0 )
+	public CBaseEntity GetPropEnt( PropType propType, const char[] propName, int element = 0 )
 	{
 		int entIndex = GetEntPropEnt( this.Ref, propType, propName, element );
-		return Entity( entIndex );
+		return CBaseEntity( entIndex );
 	};
 	public void GetPropVector( PropType propType, const char[] propName, float vec[ 3 ], int element = 0 )
 	{
@@ -62,7 +62,7 @@ methodmap Entity
 	{
 		SetEntPropFloat( this.Ref, propType, propName, value, element );
 	};
-	public void SetPropEnt( PropType propType, const char[] propName, Entity value, int element = 0 )
+	public void SetPropEnt( PropType propType, const char[] propName, CBaseEntity value, int element = 0 )
 	{
 		SetEntPropEnt( this.Ref, propType, propName, value, element );
 	};
@@ -155,12 +155,12 @@ methodmap Entity
 		return DispatchKeyValueVector( this.Ref, keyName, vec );
 	};
 
-	public bool AcceptInput( const char[] input, Entity activator = Entity:-1, Entity caller = Entity:-1, int outputid = 0 )
+	public bool AcceptInput( const char[] input, CBaseEntity activator = CBaseEntity:-1, CBaseEntity caller = CBaseEntity:-1, int outputid = 0 )
 	{
 		return AcceptEntityInput( this.Ref, input, activator.Ref, caller.Ref, outputid );
 	};
 
-	public void SetParent( Entity parent )
+	public void SetParent( CBaseEntity parent )
 	{
 		SetVariantString( "!activator" );
 		this.AcceptInput( "SetParent", parent );
@@ -171,39 +171,28 @@ methodmap Entity
 		this.AcceptInput( "SetParentAttachment" );
 	};
 
-	public Entity GetParent()
+	public CBaseEntity GetParent()
 	{
 		return this.GetPropEnt( Prop_Data, "m_pParent" );
 	};
-	public Entity GetMoveParent()
+	public CBaseEntity GetMoveParent()
 	{
 		return this.GetPropEnt( Prop_Send, "moveparent" );
 	};
 };
 
 
-/*const*/ Entity INVALID_ENTITY = Entity:INVALID_ENT_REFERENCE;
+/*const*/ CBaseEntity INVALID_ENTITY = CBaseEntity:INVALID_ENT_REFERENCE;
 
 
-stock Entity Entity_CreateByName( const char[] className, int forceEdictIndex = -1 )
+stock CBaseEntity Entity_CreateByName( const char[] className, int forceEdictIndex = -1 )
 {
 	int entIndex = CreateEntityByName( className, forceEdictIndex );
-	return Entity( entIndex );
+	return CBaseEntity( entIndex );
 }
 
-stock Entity Entity_FindByClassname( Entity startEnt, const char[] className )
+stock CBaseEntity Entity_FindByClassname( CBaseEntity startEnt, const char[] className )
 {
 	int entIndex = FindEntityByClassname( startEnt.Ref, className );
-	return Entity( entIndex );
-}
-
-
-stock bool operator==( Entity oper1, Entity oper2 )
-{
-	return oper1.Ref == oper2.Ref;
-}
-
-stock bool operator!=( Entity oper1, Entity oper2 )
-{
-	return !( oper1 == oper2 );
+	return CBaseEntity( entIndex );
 }
