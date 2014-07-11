@@ -7,5 +7,5 @@
 
 
 // tf2 related includes
-#include "tf2/thelpers_player.inc"
-#include "tf2/thelpers_objects.inc"
+#include "thelpers/tf2/player.inc"
+#include "thelpers/tf2/objects.inc"

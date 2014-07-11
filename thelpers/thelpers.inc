@@ -21,14 +21,14 @@
 
 
 // generic sdk includes
-#include "thelpers_entity.inc"
-#include "thelpers_animating.inc"
-#include "thelpers_combatweapon.inc"
-#include "thelpers_combatcharacter.inc"
-#include "thelpers_player.inc"
+#include "thelpers/entity.inc"
+#include "thelpers/animating.inc"
+#include "thelpers/combatweapon.inc"
+#include "thelpers/combatcharacter.inc"
+#include "thelpers/player.inc"
 
 // game includes
-#include "thelpers_tf2.inc"
+#include "thelpers/tf2/tf2.inc"
 
 
 // reset
