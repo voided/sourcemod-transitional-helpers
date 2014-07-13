@@ -76,28 +76,6 @@ methodmap CBaseEntity
 	}
 
 
-	property int Skin
-	{
-		public get() { return this.GetProp( Prop_Send, "m_nSkin" ); }
-		public set( int skin ) { this.SetProp( Prop_Send, "m_nSkin", skin ); }
-	}
-
-	property float ModelScale
-	{
-		public get() { return this.GetPropFloat( Prop_Send, "m_flModelScale" ); }
-		public set( float scale ) { this.SetPropFloat( Prop_Send, "m_flModelScale", scale ); }
-	}
-
-
-	public void SetModel( const char[] model )
-	{
-		SetEntityModel( this.Ref, model );
-	}
-	public int GetModel( char[] buffer, int maxBuffer )
-	{
-		return this.GetPropString( Prop_Data, "m_ModelName", buffer, maxBuffer );
-	}
-
 	public void GetLocalOrigin( float vec[ 3 ] )
 	{
 		this.GetPropVector( Prop_Send, "m_vecOrigin", vec );
