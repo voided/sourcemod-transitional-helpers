@@ -16,18 +16,18 @@ methodmap CBasePlayer < CBaseCombatCharacter
 		}
 		
 		return CBasePlayer:CBaseCombatCharacter( clientIndex );
-	};
+	}
 
 
 	property int Team
 	{
-		public get() { return GetClientTeam( this.Index ); };
-	};;
+		public get() { return GetClientTeam( this.Index ); }
+	}
 
 	property int UserID
 	{
-		public get() { return GetClientUserId( this.Index ); };
-	};;
+		public get() { return GetClientUserId( this.Index ); }
+	}
 };
 
 

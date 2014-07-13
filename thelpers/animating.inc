@@ -11,7 +11,7 @@ methodmap CBaseAnimating < CBaseEntity
 	public CBaseAnimating( int entIndex )
 	{
 		return CBaseAnimating:CBaseEntity( entIndex );
-	};
+	}
 
 	// todo
 };

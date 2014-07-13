@@ -11,7 +11,7 @@ methodmap CTFPlayer < CBasePlayer
 	public CTFPlayer( int clientIndex )
 	{
 		return CTFPlyer:CBasePlayer( clientIndex );
-	};
+	}
 
 	// todo
 };

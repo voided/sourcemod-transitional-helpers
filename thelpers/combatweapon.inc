@@ -12,7 +12,7 @@ methodmap CBaseCombatWeapon < CBaseAnimating
 	public CBaseCombatWeapon( int entIndex )
 	{
 		return CBaseCombatWeapon:CBaseAnimating( entIndex );
-	};
+	}
 
 
 	// todo
