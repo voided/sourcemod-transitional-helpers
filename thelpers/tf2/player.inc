@@ -60,4 +60,12 @@ methodmap CTFPlayer < CBasePlayer
 		TF2_RegeneratePlayer( this.Index );
 	}
 
+	/**
+	 * Respawns this player.
+	*/
+	public void Respawn()
+	{
+		TF2_RespawnPlayer( this.Index );
+	}
+
 };
