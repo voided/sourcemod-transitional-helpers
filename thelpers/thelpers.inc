@@ -15,19 +15,35 @@
 #include <halflife>
 
 
+// figure out what game we are, and what features are enabled
+#if defined GAME_TF2
+	// tf2 uses econ entities
+	#define THELPERS_ECON
+
+	#include <tf2>
+	#include <tf2_stocks>
+#endif
+
+
 // require transitional api for our includes
 #pragma newdecls required
 
 // generic sdk includes
 #include "thelpers/entity.inc"
 #include "thelpers/animating.inc"
+
+#if defined THELPERS_ECON
+	// econ has to be included fairly early, as other entity methodmaps rely on it
+	#include "thelpers/econ/econ.inc"
+#endif
+
 #include "thelpers/combatweapon.inc"
 #include "thelpers/combatcharacter.inc"
 #include "thelpers/player.inc"
 
-// reset
-#pragma newdecls optional
-
 
 // game includes
 #include "thelpers/tf2/tf2.inc"
+
+// reset
+#pragma newdecls optional

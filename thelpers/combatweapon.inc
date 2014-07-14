@@ -6,10 +6,18 @@
 #define __thelpers_combatweapon_included
 
 
+// games which use econ have their weapons derive from CEconEntity
+#if defined THELPERS_ECON
+	#define THELPERS_COMBATWEAPON_DERIVED_FROM CEconEntity
+#else
+	#define THELPERS_COMBATWEAPON_DERIVED_FROM CBaseAnimating
+#endif
+
+
 /**
  * Entity methodmap from which all weapon entities derive from.
 */
-methodmap CBaseCombatWeapon < CBaseAnimating // todo: should derive from CEconEntity in econ games
+methodmap CBaseCombatWeapon < THELPERS_COMBATWEAPON_DERIVED_FROM
 {
 	/**
 	 * Create a CBaseCombatWeapon instance from the given entity index.
