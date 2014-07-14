@@ -2,6 +2,8 @@
 
 A set of helper include files for cleverly (or abusively) working with the SM transitional API.
 
+These helpers define a hierarchical structure of methodmaps that attempt to emulate the class hierarchy of Source engine entities. Modders should feel right at home by seeing familiar class names such as `CBaseCombatWeapon`, `CBasePlayer`, etc.
+
 
 ## Usage
 
