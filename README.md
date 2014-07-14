@@ -2,6 +2,7 @@
 
 A set of helper include files for cleverly (or abusively) working with the SM transitional API.
 
+
 ## Usage
 
 Include thelpers:
@@ -32,6 +33,7 @@ public void OnClientPutInServer( int client )
 }
 ```
 
+
 ## Documentation
 
 The include files themselves are highly documented with doxygen-like comments. Simply browse [around the tree](https://github.com/VoiDeD/sourcemod-transitional-helpers/tree/master/thelpers).
@@ -41,6 +43,9 @@ The include files themselves are highly documented with doxygen-like comments. S
 The API aims to be game-agnostic where possible to support all possible games. However, it is possible to enable game specific features by `#defining GAME_X` before including the thelpers files.
 
 Currently only TF2 specific additions have been implemented (enabled with the `GAME_TF2` define), but pull requests for other games are welcome!
+
+If your game uses econ entities, you can enable econ functionality with `#define GAME_ECON`.
+
 
 ## Considerations
 

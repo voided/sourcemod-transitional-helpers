@@ -7,7 +7,7 @@
 
 
 // games which use econ have their weapons derive from CEconEntity
-#if defined THELPERS_ECON
+#if defined GAME_ECON
 	#define THELPERS_COMBATWEAPON_DERIVED_FROM CEconEntity
 #else
 	#define THELPERS_COMBATWEAPON_DERIVED_FROM CBaseAnimating

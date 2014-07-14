@@ -18,7 +18,7 @@
 // figure out what game we are, and what features are enabled
 #if defined GAME_TF2
 	// tf2 uses econ entities
-	#define THELPERS_ECON
+	#define GAME_ECON
 
 	#include <tf2>
 	#include <tf2_stocks>
@@ -33,7 +33,7 @@
 #include "thelpers/entity.inc"
 #include "thelpers/animating.inc"
 
-#if defined THELPERS_ECON
+#if defined GAME_ECON
 	// econ has to be included fairly early, as other entity methodmaps rely on it
 	#include "thelpers/econ/econ.inc"
 #endif
