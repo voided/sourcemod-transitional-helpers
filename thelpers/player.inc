@@ -44,6 +44,29 @@ methodmap CBasePlayer < CBaseCombatCharacter
 	{
 		public get() { return GetClientUserId( this.Index ); }
 	}
+
+
+	/**
+	 * Gets the Steam Account ID of this player.
+	 *
+	 * @param validate		Check Steam back-end validation status.
+	*/
+	public int GetAccountID( bool validate = true )
+	{
+		return GetSteamAccountID( this.Index, validate );
+	}
+
+	/**
+	 * Gets the Steam ID string of this player.
+	 *
+	 * @param buffer		The character buffer to copy the Steam ID to.
+	 * @param maxBuffer		The maximum size of the input buffer.
+	 * @param validate		Check Steam back-end validation status.
+	*/
+	public bool GetSteamID( char[] buffer, int maxBuffer, bool validate = true )
+	{
+		return GetClientAuthString( this.Index, buffer, maxBuffer, validate );
+	}
 };
 
 
