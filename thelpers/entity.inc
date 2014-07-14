@@ -6,6 +6,37 @@
 #define __thelpers_entity_included
 
 
+// todo: does solidtype differ among games?
+enum SolidType_t
+{
+	SOLID_NONE		= 0, // no solid model
+	SOLID_BSP		= 1, // BSP tree
+	SOLID_BBOX		= 2, // an AABB
+	SOLID_OBB		= 3, // an OBB
+	SOLID_OBB_YAW	= 4, // an OBB, constrained so that it can only yaw
+	SOLID_CUSTOM	= 5, // always call into the entity for tests
+	SOLID_VPHYSICS	= 6, // solid vphysics object, get vcollide from the model and collide with that
+	SOLID_LAST,
+};
+
+// todo: do solid flags differ among games?
+enum SolidFlags_t
+{
+	FSOLID_CUSTOMRAYTEST		= 0x0001,	// Ignore solid type + always call into the entity for ray tests
+	FSOLID_CUSTOMBOXTEST		= 0x0002,	// Ignore solid type + always call into the entity for swept box tests
+	FSOLID_NOT_SOLID			= 0x0004,	// Are we currently not solid?
+	FSOLID_TRIGGER				= 0x0008,	// This is something may be collideable but fires touch functions
+											// even when it's not collideable (when the FSOLID_NOT_SOLID flag is set)
+	FSOLID_NOT_STANDABLE		= 0x0010,	// You can't stand on this
+	SOLID_VOLUME_CONTENTS		= 0x0020,	// Contains volumetric contents (like water)
+	FSOLID_FORCE_WORLD_ALIGNED	= 0x0040,	// Forces the collision rep to be world-aligned even if it's SOLID_BSP or SOLID_VPHYSICS
+	FSOLID_USE_TRIGGER_BOUNDS	= 0x0080,	// Uses a special trigger bounds separate from the normal OBB
+	FSOLID_ROOT_PARENT_ALIGNED	= 0x0100,	// Collisions are defined in root parent's local coordinate space
+	FSOLID_TRIGGER_TOUCH_DEBRIS	= 0x0200,	// This trigger will touch debris objects
+	FSOLID_MAX_BITS	= 10
+};
+
+
 /**
  * Represents the base of the game entity hierarchy in the source engine
 */
@@ -178,6 +209,33 @@ methodmap CBaseEntity
 
 
 	/**
+	 * Gets or sets this entity's health.
+	*/
+	property int Health
+	{
+		public get() { return this.GetProp( Prop_Send, "m_iHealth" ); }
+		public set( int health ) { this.SetProp( Prop_Send, "m_iHealth", health ); }
+	}
+
+	/**
+	 * Gets or sets this entity's solid type.
+	*/
+	property SolidType_t SolidType
+	{
+		public get() { return SolidType_t:this.GetProp( Prop_Send, "m_nSolidType" ); }
+		public set( SolidType_t solidType ) { this.SetProp( Prop_Send, "m_nSolidType", _:solidType ); }
+	}
+	/**
+	 * Gets or sets this entity's solid flags.
+	*/
+	property SolidFlags_t SolidFlags
+	{
+		public get() { return SolidFlags_t:this.GetProp( Prop_Send, "m_usSolidFlags" ); }
+		public set( SolidFlags_t solidFlags ) { this.SetProp( Prop_Send, "m_usSolidFlags", _:solidFlags ); }
+	}
+
+
+	/**
 	 * Gets the vector origin of the entity in local space (relative to the parent).
 	 *
 	 * @param vec		The vector buffer to store the entity origin in.
@@ -249,6 +307,25 @@ methodmap CBaseEntity
 	public void SetAbsAngles( const float ang[ 3 ] )
 	{
 		this.SetPropVector( Prop_Data, "m_angAbsRotation", ang );
+	}
+
+	/**
+	 * Gets the OBB minimum extent of this entity's collision prop.
+	 *
+	 * @param vec		Vector buffer to store the result in.
+	*/
+	public void GetMins( float vec[ 3 ] )
+	{
+		this.GetPropVector( Prop_Send, "m_vecMins", vec );
+	}
+	/**
+	 * Gets the OBB maximum extent of this entity's collision prop.
+	 *
+	 * @param vec		Vector buffer to store the result in.
+	*/
+	public void GetMaxs( float vec[ 3 ] )
+	{
+		this.GetPropVector( Prop_Send, "m_vecMaxs", vec );
 	}
 
 	/**

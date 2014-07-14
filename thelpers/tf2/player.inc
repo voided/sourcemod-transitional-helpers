@@ -39,6 +39,7 @@ methodmap CTFPlayer < CBasePlayer
 		public get() { return TF2_GetPlayerClass( this.Ref ); }
 	}
 
+
 	/**
 	 * Sets the client's player class.
 	 *
@@ -48,6 +49,15 @@ methodmap CTFPlayer < CBasePlayer
 	public void SetClass( TFClassType class, bool persistent = true )
 	{
 		TF2_SetPlayerClass( this.Ref, class, _, persistent );
+	}
+
+	/**
+	 * Regenerate the player's class, loadout, weapons, ammo, etc.
+	 * Equivalent of having a player touch a resupply cabinet.
+	*/
+	public void Regenerate()
+	{
+		TF2_RegeneratePlayer( this.Index );
 	}
 
 };
