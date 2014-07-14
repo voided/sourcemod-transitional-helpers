@@ -28,6 +28,7 @@
 // require transitional api for our includes
 #pragma newdecls required
 
+
 // generic sdk includes
 #include "thelpers/entity.inc"
 #include "thelpers/animating.inc"
@@ -43,7 +44,10 @@
 
 
 // game includes
-#include "thelpers/tf2/tf2.inc"
+#if defined GAME_TF2
+	#include "thelpers/tf2/tf2.inc"
+#endif
+
 
 // reset
 #pragma newdecls optional
