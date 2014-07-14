@@ -348,6 +348,12 @@ methodmap CBasePlayer < CBaseCombatCharacter
 
 
 /**
+ * A constant entity instance that represents an invalid player.
+*/
+/*const*/ CBasePlayer INVALID_PLAYER = CBasePlayer:INVALID_ENTITY;
+
+
+/**
  * Helper function to get a CBasePlayer wrapper from a player of the given UserID.
 */
 stock CBasePlayer Player_FromUserId( int userid )

@@ -6,6 +6,9 @@
 #define __thelpers_econ_entity_included
 
 
+enum CBasePlayer: {};
+
+
 methodmap CEconEntity < CBaseAnimating
 {
 	/**
@@ -52,20 +55,40 @@ methodmap CEconEntity < CBaseAnimating
 	}
 
 
-#if 0
-	// would be nice to have this, but include order currently hoses us
+	/**
+	 * Gets the player entity that owns this econ entity, if they're present on the server.
+	*/
 	public CBasePlayer GetOwningPlayer()
 	{
 		for ( int client = 1 ; client <= MaxClients ; ++client )
 		{
+			if ( !IsClientInGame( client ) )
+				continue;
+
+			int accountId = GetSteamAccountID( client );
+
+			if ( accountId == 0 )
+				continue; // skip clients with no auth or steamid
+
+			if ( accountId == this.AccountID )
+			{
+				// NOTE: this must return the ref, since we can't construct a CBasePlayer here
+				return CBasePlayer:EntIndexToEntRef( client );
+			}
+
+#if 0
+			// see SM bug #6188 for why we can't do this just yet
 			CBasePlayer player = CBasePlayer( client );
+
+			if ( !player.IsInGame )
+				continue;
 
 			if ( player.GetAccountID() == this.AccountID )
 				return player;
+#endif
 		}
 
 		return CBasePlayer:INVALID_ENTITY;
 	}
-#endif
 
 };
