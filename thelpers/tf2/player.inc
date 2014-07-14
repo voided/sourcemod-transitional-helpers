@@ -19,7 +19,7 @@ methodmap CTFPlayer < CBasePlayer
 	*/
 	public CTFPlayer( int clientIndex )
 	{
-		return CTFPlyer:CBasePlayer( clientIndex );
+		return CTFPlayer:CBasePlayer( clientIndex );
 	}
 
 
