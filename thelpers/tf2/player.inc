@@ -22,6 +22,15 @@ methodmap CTFPlayer < CBasePlayer
 		return CTFPlyer:CBasePlayer( clientIndex );
 	}
 
+
+	/**
+	 * Gets the team this player belongs to.
+	*/
+	property TFTeam Team
+	{
+		public get() { return TFTeam:GetClientTeam( this.Index ); }
+	}
+
 	/**
 	 * Gets the player class of this player instance.
 	*/
@@ -29,4 +38,16 @@ methodmap CTFPlayer < CBasePlayer
 	{
 		public get() { return TF2_GetPlayerClass( this.Ref ); }
 	}
+
+	/**
+	 * Sets the client's player class.
+	 *
+	 * @param class			The TF2 class to set the player to.
+	 * @param persistent	If true, this sets the player's desired class so it sticks after death.
+	*/
+	public void SetClass( TFClassType class, bool persistent = true )
+	{
+		TF2_SetPlayerClass( this.Ref, class, _, persistent );
+	}
+
 };
