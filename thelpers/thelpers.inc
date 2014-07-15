@@ -22,8 +22,7 @@
 
 	#include <tf2>
 	#include <tf2_stocks>
-#endif
-#if defined GAME_CSS
+#elseif defined GAME_CSS
 	// css doesn't directly use econ entities, but has attribute containers
 	#define GAME_ECON
 
@@ -48,12 +47,13 @@
 #include "thelpers/combatcharacter.inc"
 #include "thelpers/player.inc"
 
+#include "thelpers/gamerules.inc"
+
 
 // game includes
 #if defined GAME_TF2
 	#include "thelpers/tf2/tf2.inc"
-#endif
-#if defined GAME_CSS
+#elseif defined GAME_CSS
 	#include "thelpers/css/css.inc"
 #endif
 
