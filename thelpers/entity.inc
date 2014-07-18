@@ -38,6 +38,12 @@ enum SolidFlags_t
 
 
 /**
+ * A constant entity instance that represents an invalid entity.
+*/
+const CBaseEntity INVALID_ENTITY = CBaseEntity:INVALID_ENT_REFERENCE;
+
+
+/**
  * Represents the base of the game entity hierarchy in the source engine
 */
 methodmap CBaseEntity
@@ -51,7 +57,7 @@ methodmap CBaseEntity
 	public CBaseEntity( int entIndex )
 	{
 		if ( !IsValidEntity( entIndex ) )
-			return CBaseEntity:INVALID_ENT_REFERENCE;
+			return INVALID_ENTITY;
 
 		return CBaseEntity:EntIndexToEntRef( entIndex );
 	}
@@ -442,11 +448,6 @@ methodmap CBaseEntity
 	}
 };
 
-
-/**
- * A constant entity instance that represents an invalid entity.
-*/
-/*const*/ CBaseEntity INVALID_ENTITY = CBaseEntity:INVALID_ENT_REFERENCE;
 
 
 /**

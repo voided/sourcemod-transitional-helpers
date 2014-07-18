@@ -7,6 +7,12 @@
 
 
 /**
+ * A constant entity instance that represents an invalid player.
+*/
+const CBasePlayer INVALID_PLAYER = CBasePlayer:INVALID_ENTITY;
+
+
+/**
  * Entity methodmap from which all players derive from.
 */
 methodmap CBasePlayer < CBaseCombatCharacter
@@ -22,7 +28,7 @@ methodmap CBasePlayer < CBaseCombatCharacter
 		if ( clientIndex == 0 )
 		{
 			// special case for client 0 as that is the worldspawn entity, and technically not a valid client
-			return CBasePlayer:INVALID_ENTITY;
+			return INVALID_PLAYER;
 		}
 		
 		return CBasePlayer:CBaseCombatCharacter( clientIndex );
@@ -346,11 +352,6 @@ methodmap CBasePlayer < CBaseCombatCharacter
 	}
 };
 
-
-/**
- * A constant entity instance that represents an invalid player.
-*/
-/*const*/ CBasePlayer INVALID_PLAYER = CBasePlayer:INVALID_ENTITY;
 
 
 /**
