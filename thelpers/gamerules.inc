@@ -58,6 +58,13 @@ methodmap CTeamplayRoundBasedRules < CTeamplayRules
 	{
 		public get() { return GameRules_GetProp( "m_bInSetup" ) == 1; }
 	}
+	/**
+	 * Is the game currently waiting for players to connect?
+	*/
+	property bool IsInWaitingForPlayers
+	{
+		public get() { return GameRules_GetProp( "m_bInWaitingForPlayers" ) == 1; }
+	}
 };
 
 
