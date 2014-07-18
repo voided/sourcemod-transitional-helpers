@@ -8,3 +8,4 @@
 
 // css related includes
 #include "thelpers/css/player.inc"
+#include "thelpers/css/gamerules.inc"
