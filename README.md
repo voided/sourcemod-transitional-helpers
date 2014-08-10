@@ -52,4 +52,4 @@ If your game uses econ entities, you can enable econ functionality with `#define
 ## Considerations
 
 - This library will be changing rapidly and often. Expect breaking changes.
-- SM's transitional syntax is exerimental and thus has the potential to break us. Expect more breaking changes.
+- SM's transitional syntax is experimental and thus has the potential to break us. Expect more breaking changes.
