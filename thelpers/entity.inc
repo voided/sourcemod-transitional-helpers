@@ -219,6 +219,15 @@ methodmap CBaseEntity
 
 
 	/**
+	 * Gets or sets the team the current entity belongs to.
+	*/
+	property int Team
+	{
+		public get() { return this.GetProp( Prop_Send, "m_iTeamNum" ); }
+		public set( int teamNum ) { this.SetProp( Prop_Send, "m_iTeamNum", teamNum ); }
+	}
+
+	/**
 	 * Gets or sets this entity's health.
 	*/
 	property int Health
@@ -232,8 +241,8 @@ methodmap CBaseEntity
 	*/
 	property float Gravity
 	{
-		public get() { return this.GetPropFloat( Prop_Send, "m_flGravity" ); }
-		public set( float gravity ) { this.SetPropFloat( Prop_Send, "m_flGravity", gravity ); }
+		public get() { return GetEntityGravity( this.Ref ); }
+		public set( float gravity ) { SetEntityGravity( this.Ref, gravity ); }
 	}
 
 	/**
@@ -251,6 +260,24 @@ methodmap CBaseEntity
 	{
 		public get() { return SolidFlags_t:this.GetProp( Prop_Send, "m_usSolidFlags" ); }
 		public set( SolidFlags_t solidFlags ) { this.SetProp( Prop_Send, "m_usSolidFlags", _:solidFlags ); }
+	}
+
+	/**
+	 * Gets or sets this entity's owner entity.
+	*/
+	property CBaseEntity OwnerEntity
+	{
+		public get() { return this.GetPropEnt( Prop_Send, "m_hOwnerEntity" ); }
+		public set( CBaseEntity owner ) { this.SetPropEnt( Prop_Send, "m_hOwnerEntity", owner ); }
+	}
+
+	/**
+	 * Gets or sets this entity's render mode.
+	*/
+	property RenderMode RenderMode
+	{
+		public get() { return GetEntityRenderMode( this.Ref ); }
+		public set( RenderMode mode ) { SetEntityRenderMode( this.Ref, mode ); }
 	}
 
 
@@ -326,6 +353,16 @@ methodmap CBaseEntity
 	public void SetAbsAngles( const float ang[ 3 ] )
 	{
 		this.SetPropVector( Prop_Data, "m_angAbsRotation", ang );
+	}
+
+	/**
+	 * Gets the vector instantaneous velocity of this entity.
+	 *
+	 * @param vec		The vector buffer to store the velocity in.
+	*/
+	public void GetVelocity( float vec[ 3 ] )
+	{
+		this.GetPropVector( Prop_Data, "m_vecVelocity", vec );
 	}
 
 	/**
@@ -525,6 +562,17 @@ methodmap CBaseEntity
 	public CBaseEntity GetParent()
 	{
 		return this.GetPropEnt( Prop_Data, "m_pParent" );
+	}
+
+	/**
+	 * Dispatches a particle effect on this entity instance.
+	 *
+	 * @param effectName	The name of the effect to dispatch.
+	*/
+	public void DispatchEffect( const char[] effectName )
+	{
+		SetVariantString( effectName );
+		this.AcceptInput( "DispatchEffect" );
 	}
 };
 
