@@ -59,6 +59,10 @@ methodmap CBaseEntity
 		if ( !IsValidEntity( entIndex ) )
 			return INVALID_ENTITY;
 
+		// to support logical ents, which are passed through certain forwards and callbacks as ent refs (!) rather than indexes
+		// we have to first convert the reference to an actual index. this will no-op when given an index rather than a ref
+		entIndex = EntRefToEntIndex( entIndex );
+
 		return CBaseEntity:EntIndexToEntRef( entIndex );
 	}
 
