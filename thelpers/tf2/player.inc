@@ -78,4 +78,15 @@ methodmap CTFPlayer < CBasePlayer
 		TF2_RespawnPlayer( this.Index );
 	}
 
+	/**
+	 * Sets the custom model of this player.
+	 *
+	 * @param model		The model to set on this player.
+	*/
+	public void SetCustomModel( const char[] model )
+	{
+		SetVariantString( model );
+		this.AcceptInput( "SetCustomModel" );
+	}
+
 };

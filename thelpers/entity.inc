@@ -224,6 +224,15 @@ methodmap CBaseEntity
 	}
 
 	/**
+	 * Gets or sets this entity's gravity.
+	*/
+	property float Gravity
+	{
+		public get() { return this.GetPropFloat( Prop_Send, "m_flGravity" ); }
+		public set( float gravity ) { this.SetPropFloat( Prop_Send, "m_flGravity", gravity ); }
+	}
+
+	/**
 	 * Gets or sets this entity's solid type.
 	*/
 	property SolidType_t SolidType
@@ -335,6 +344,60 @@ methodmap CBaseEntity
 	}
 
 	/**
+	 * Gets the current entity flags from this entity instance.
+	 *
+	 * @return	The current entity flags.
+	*/
+	public int GetFlags()
+	{
+		return GetEntityFlags( this.Ref );
+	}
+	/**
+	 * Sets the given entity flags on this entity instance.
+	 *
+	 * @param	The entity flags to set.
+	*/
+	public void SetFlags( int flags )
+	{
+		SetEntityFlags( this.Ref, flags );
+	}
+
+	/**
+	 * Adds the given entity flags to this entity instance.
+	 *
+	 * @param flags		The entity flags to add.
+	*/
+	public void AddFlag( int flags )
+	{
+		this.SetFlags( this.GetFlags() | flags );
+	}
+	/**
+	 * Removes the given entity flags from this entity instance.
+	 *
+	 * @param flagsToRemove		The entity flags to remove.
+	*/
+	public void RemoveFlag( int flagsToRemove )
+	{
+		this.SetFlags( this.GetFlags() & ~flagsToRemove );
+	}
+	/**
+	 * Clears the entity flags of this entity instance.
+	*/
+	public void ClearFlags()
+	{
+		this.SetFlags( 0 );
+	}
+	/**
+	 * Toggles the given entity flag on this entity instance.
+	 *
+	 * @param flagToToggle		The entity flag to toggle.
+	*/
+	public void ToggleFlag( int flagToToggle )
+	{
+		this.SetFlags( this.GetFlags() ^ flagToToggle );
+	}
+
+	/**
 	 * Spawns the entity into the game.
 	 *
 	 * @return		A boolean indicating if the entity was successfully spawned.
@@ -406,6 +469,19 @@ methodmap CBaseEntity
 	public bool AcceptInput( const char[] input, CBaseEntity activator = CBaseEntity:INVALID_ENT_REFERENCE, CBaseEntity caller = CBaseEntity:INVALID_ENT_REFERENCE, int outputId = 0 )
 	{
 		return AcceptEntityInput( this.Ref, input, activator.Ref, caller.Ref, outputId );
+	}
+
+	/**
+	 * Gets this entity's classname.
+	 *
+	 * @param classname		Buffer in which to store this entity's classname.
+	 * @param maxClassname	The maximum length of the output buffer.
+	 *
+	 * @return		A boolean value indicating if the classname was successfully retrieved.
+	*/
+	public bool GetClassname( char[] classname, int maxClassname )
+	{
+		return GetEntityClassname( this.Ref, classname, maxClassname );
 	}
 
 	/**

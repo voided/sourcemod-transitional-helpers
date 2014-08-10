@@ -142,6 +142,23 @@ methodmap CBasePlayer < CBaseCombatCharacter
 	}
 
 	/**
+	 * Gets or sets the player's default field of view.
+	*/
+	property int DefaultFOV
+	{
+		public get() { return this.GetProp( Prop_Send, "m_iDefaultFOV" ); }
+		public set( int fov ) { this.SetProp( Prop_Send, "m_iDefaultFOV", fov ); }
+	}
+	/**
+	 * Gets or sets the player's current field of view.
+	*/
+	property int FOV
+	{
+		public get() { return this.GetProp( Prop_Send, "m_iFOV" ); }
+		public set( int fov ) { this.SetProp( Prop_Send, "m_iFOV", fov ); }
+	}
+
+	/**
 	 * Gets or sets this player's amount of armor.
 	 * Note: Not all games may support this.
 	*/
@@ -349,6 +366,35 @@ methodmap CBasePlayer < CBaseCombatCharacter
 	public void Reconnect()
 	{
 		ReconnectClient( this.Index );
+	}
+
+	/**
+	 * Kicks the player from the server with the given message.
+	 *
+	 * @param message	The kick reason to display to the player.
+	*/
+	public void Kick( const char[] message )
+	{
+		KickClient( this.Index, "%s", message );
+	}
+
+	/**
+	 * Executes a fake client command on this player.
+	 *
+	 * @param command	The command to execute.
+	*/
+	public void FakeCommand( const char[] command )
+	{
+		FakeClientCommand( this.Index, "%s", command );
+	}
+	/**
+	 * Executes a client command on this player.
+	 *
+	 * @param command	The command to execute.
+	*/
+	public void Command( const char[] command )
+	{
+		ClientCommand( this.Index, "%s", command );
 	}
 };
 
