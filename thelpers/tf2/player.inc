@@ -52,6 +52,16 @@ methodmap CTFPlayer < CBasePlayer
 	}
 
 	/**
+	 * Changes this player's assigned team.
+	 *
+	 * @param team	The team to assign to this player.
+	*/
+	public void ChangeTeam( TFTeam team )
+	{
+		ChangeClientTeam( this.Index, _:team );
+	}
+
+	/**
 	 * Regenerate the player's class, loadout, weapons, ammo, etc.
 	 * Equivalent of having a player touch a resupply cabinet.
 	*/
