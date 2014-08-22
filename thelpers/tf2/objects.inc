@@ -35,7 +35,15 @@ methodmap CBaseObject < CBaseCombatCharacter
 	*/
 	property TFObjectType ObjectType
 	{
-		public get() { return TFObjectType:this.GetProp( Prop_Send, "m_iObjectType" ); }
+		public get() { return TF2_GetObjectType( this.Ref ); }
+	}
+
+	/**
+	 * Gets the object mode this entity is operating in.
+	*/
+	property TFObjectMode ObjectMode
+	{
+		public get() { return TF2_GetObjectMode( this.Ref ); }
 	}
 
 	/**
