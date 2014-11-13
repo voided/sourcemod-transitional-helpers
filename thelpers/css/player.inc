@@ -50,7 +50,7 @@ methodmap CCSPlayer < CBasePlayer
 	 *
 	 * @param clanTag		The clan tag to set.
 	*/
-	public void SetClanTag( const char clanTag[] )
+	public void SetClanTag( const char[] clanTag )
 	{
 		CS_SetClientClanTag( this.Index, clanTag );
 	}
