@@ -19,7 +19,7 @@ Go wild:
 ```sourcepawn
 public void OnClientPutInServer( int client )
 {
-  CBasePlayer player = CBasePlayer( client );
+  CBasePlayer player = new CBasePlayer( client );
   
   char steamId[ 128 ];
   player.GetSteamID( steamId, sizeof( steamId ) );
@@ -27,7 +27,7 @@ public void OnClientPutInServer( int client )
   PrintToServer( "%N's steam id: %s", player.Index, steamId );
   
   // do some tf2 specific stuff
-  CTFPlayer tfPlayer = CTFPlayer:player;
+  CTFPlayer tfPlayer = view_as<CTFPlayer>( player ); // "downcast" to a CTFPlayer object
   tfPlayer.SetClass( TFClassType_Medic );
   
   // we didn't like them anyway
@@ -44,7 +44,7 @@ The include files themselves are highly documented with doxygen-like comments. S
 
 The API aims to be game-agnostic where possible to support all possible games. However, it is possible to enable game specific features by `#defining GAME_X` before including the thelpers files.
 
-Currently only TF2 specific additions have been implemented (enabled with the `GAME_TF2` define), but pull requests for other games are welcome!
+Currently only TF2 and some CS:S specific additions have been implemented (enabled with the `GAME_TF2` and `GAME_CSS` defines respectively), but pull requests for other games are welcome!
 
 If your game uses econ entities, you can enable econ functionality with `#define GAME_ECON`.
 
