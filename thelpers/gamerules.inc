@@ -12,6 +12,31 @@
 */
 methodmap CGameRules < CBaseEntity
 {
+	/**
+	 * Returns the gamerules proxy entity for this game, or null if the entity has not been created yet.
+	*/
+	public static CGameRules GetEntity()
+	{
+		CBaseEntity gameRulesEnt = null;
+
+#if defined GAME_TF2
+		gameRulesEnt = CBaseEntity.FindByClassname( null, "tf_gamerules" );
+#elseif defined GAME_CSS || defined GAME_CSGO
+		gameRulesEnt = CBaseEntity.FindByClassname( null, "cs_gamerules" );
+#elseif defined GAME_DODS
+		gameRulesEnt = CBaseEntity.FindByClassname( null, "dod_gamerules" );
+#elseif defined GAME_HL2MP
+		gameRulesEnt = CBaseEntity.FindByClassname( null, "hl2mp_gamerules" );
+#elseif defined GAME_L4D || defined GAME_L4D2
+		gameRulesEnt = CBaseEntity.FindByClassname( null, "terror_gamerules" );
+#elseif defined GAME_DOTA
+		gameRulesEnt = CBaseEntity.FindByClassname( null, "dota_gamerules" );
+#else
+		ThrowError( "CGameRules.GetEntity is not supported for this game!" );
+#endif
+
+		return view_as<CGameRules>( gameRulesEnt );
+	}
 };
 
 
@@ -66,27 +91,3 @@ methodmap CTeamplayRoundBasedRules < CTeamplayRules
 		public get() { return GameRules_GetProp( "m_bInWaitingForPlayers" ) == 1; }
 	}
 };
-
-
-/**
- * Returns the gamerules proxy entity for this game, or INVALID_ENTITY if the entity has not been created yet.
-*/
-stock CGameRules GameRules_GetEntity()
-{
-#if defined GAME_TF2
-	return CGameRules:Entity_FindByClassname( INVALID_ENTITY, "tf_gamerules" );
-#elseif defined GAME_CSS || defined GAME_CSGO
-	return CGameRules:Entity_FindByClassname( INVALID_ENTITY, "cs_gamerules" );
-#elseif defined GAME_DODS
-	return CGameRules:Entity_FindByClassname( INVALID_ENTITY, "dod_gamerules" );
-#elseif defined GAME_HL2MP
-	return CGameRules:Entity_FindByClassname( INVALID_ENTITY, "hl2mp_gamerules" );
-#elseif defined GAME_L4D || defined GAME_L4D2
-	return CGameRules:Entity_FindByClassname( INVALID_ENTITY, "terror_gamerules" );
-#elseif defined GAME_DOTA
-	return CGameRules:Entity_FindByClassname( INVALID_ENTITY, "dota_gamerules" );
-#else
-	// todo: throw error
-	return CGameRules:INVALID_ENTITY;
-#endif
-}

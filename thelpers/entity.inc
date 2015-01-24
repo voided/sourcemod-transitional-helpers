@@ -572,24 +572,25 @@ methodmap CBaseEntity __nullable__
 		SetVariantString( effectName );
 		this.AcceptInput( "DispatchEffect" );
 	}
+
+
+
+
+	/**
+	 * Create an entity and wrap it in a CBaseEntity methodmap.
+	*/
+	public static CBaseEntity CreateByName( const char[] className, int forceEdictIndex = -1 )
+	{
+		int entIndex = CreateEntityByName( className, forceEdictIndex );
+		return new CBaseEntity( entIndex );
+	}
+
+	/**
+	 * Find an entity by classname and wrap the result in a CBaseEntity methodmap.
+	*/
+	public static CBaseEntity FindByClassname( CBaseEntity startEnt, const char[] className )
+	{
+		int entIndex = FindEntityByClassname( startEnt.Ref, className );
+		return new CBaseEntity( entIndex );
+	}
 };
-
-
-
-/**
- * Helper function to create an entity and wrap it in a CBaseEntity methodmap.
-*/
-stock CBaseEntity Entity_CreateByName( const char[] className, int forceEdictIndex = -1 )
-{
-	int entIndex = CreateEntityByName( className, forceEdictIndex );
-	return CBaseEntity( entIndex );
-}
-
-/**
- * Helper function to find an entity by classname and wrap the result in a CBaseEntity methodmap.
-*/
-stock CBaseEntity Entity_FindByClassname( CBaseEntity startEnt, const char[] className )
-{
-	int entIndex = FindEntityByClassname( startEnt.Ref, className );
-	return CBaseEntity( entIndex );
-}
