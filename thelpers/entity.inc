@@ -573,7 +573,35 @@ methodmap CBaseEntity __nullable__
 		this.AcceptInput( "DispatchEffect" );
 	}
 
+	/**
+	 * Gets this entity's render color.
+	 *
+	 * @param r		The red component of the entity's color, filled by reference.
+	 * @param g		The green component of the entity's color, filled by reference.
+	 * @param b		The blue component of the entity's color, filled by reference.
+	 * @param a		The alpha component of the entity's color, optionally filled by reference.
+	*/
+	public void GetRenderColor( int &r, int &g, int &b, int &a = 0 )
+	{
+		int color = this.GetProp( Prop_Send, "m_clrRender" );
 
+		r = color & 0x000000FF;
+		g = (color & 0x0000FF00) >> 8;
+		b = (color & 0x00FF0000) >> 16;
+		a = (color & 0xFF000000) >> 24;
+	}
+	/**
+	 * Sets this entity's render color.
+	 *
+	 * @param r		The red component to set. Valid byte values from 0 to 255.
+	 * @param g		The green component to set. Valid byte values from 0 to 255.
+	 * @param b		The blue component to set. Valid byte values from 0 to 255.
+	 * @param a		The optional alpha component to set. Valid byte values from 0 to 255.
+	*/
+	public void SetRenderColor( int r, int g, int b, int a = 255 )
+	{
+		SetEntityRenderColor( this.Ref, r, g, b, a );
+	}
 
 
 	/**
