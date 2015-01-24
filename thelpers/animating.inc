@@ -20,7 +20,7 @@ methodmap CBaseAnimating < CBaseEntity
 	*/
 	public CBaseAnimating( int entIndex )
 	{
-		return CBaseAnimating:CBaseEntity( entIndex );
+		return view_as<CBaseAnimating>( new CBaseEntity( entIndex ) );
 	}
 
 

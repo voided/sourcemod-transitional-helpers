@@ -19,7 +19,7 @@ methodmap CTFPlayer < CBasePlayer
 	*/
 	public CTFPlayer( int clientIndex )
 	{
-		return CTFPlayer:CBasePlayer( clientIndex );
+		return view_as<CTFPlayer>( CBasePlayer( clientIndex ) );
 	}
 
 
@@ -28,7 +28,7 @@ methodmap CTFPlayer < CBasePlayer
 	*/
 	property TFTeam Team
 	{
-		public get() { return TFTeam:GetClientTeam( this.Index ); }
+		public get() { return view_as<TFTeam>( GetClientTeam( this.Index ) ); }
 	}
 
 	/**
@@ -58,7 +58,7 @@ methodmap CTFPlayer < CBasePlayer
 	*/
 	public void ChangeTeam( TFTeam team )
 	{
-		ChangeClientTeam( this.Index, _:team );
+		ChangeClientTeam( this.Index, view_as<int>( team ) );
 	}
 
 	/**

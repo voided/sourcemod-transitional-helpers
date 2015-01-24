@@ -8,6 +8,9 @@
 
 enum CBasePlayer: {};
 
+// into the record books we go for crimes against sourcepawn
+methodmap CBasePlayerNullableHack __nullable__ {};
+
 
 methodmap CEconEntity < CBaseAnimating
 {
@@ -19,7 +22,7 @@ methodmap CEconEntity < CBaseAnimating
 	*/
 	public CEconEntity( int entIndex )
 	{
-		return CEconEntity:CBaseAnimating( entIndex );
+		return view_as<CEconEntity>( new CBaseAnimating( entIndex ) );
 	}
 
 
@@ -73,7 +76,7 @@ methodmap CEconEntity < CBaseAnimating
 			if ( accountId == this.AccountID )
 			{
 				// NOTE: this must return the ref, since we can't construct a CBasePlayer here
-				return CBasePlayer:EntIndexToEntRef( client );
+				return view_as<CBasePlayer>( EntIndexToEntRef( client ) );
 			}
 
 #if 0
@@ -88,7 +91,7 @@ methodmap CEconEntity < CBaseAnimating
 #endif
 		}
 
-		return CBasePlayer:INVALID_ENTITY;
+		return view_as<CBasePlayer>( view_as<CBasePlayerNullableHack>( null ) );
 	}
 
 };

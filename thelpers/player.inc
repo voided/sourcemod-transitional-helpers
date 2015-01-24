@@ -6,11 +6,6 @@
 #define __thelpers_client_included
 
 
-/**
- * A constant entity instance that represents an invalid player.
-*/
-const CBasePlayer INVALID_PLAYER = CBasePlayer:INVALID_ENTITY;
-
 
 /**
  * Entity methodmap from which all players derive from.
@@ -28,10 +23,10 @@ methodmap CBasePlayer < CBaseCombatCharacter
 		if ( clientIndex == 0 )
 		{
 			// special case for client 0 as that is the worldspawn entity, and technically not a valid client
-			return INVALID_PLAYER;
+			return null;
 		}
 		
-		return CBasePlayer:CBaseCombatCharacter( clientIndex );
+		return new CBaseCombatCharacter( clientIndex );
 	}
 
 

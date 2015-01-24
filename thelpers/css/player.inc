@@ -19,7 +19,7 @@ methodmap CCSPlayer < CBasePlayer
 	*/
 	public CCSPlayer( int clientIndex )
 	{
-		return CCSPlayer:CBasePlayer( clientIndex );
+		return view_as<CCSPlayer>( new CBasePlayer( clientIndex ) );
 	}
 
 

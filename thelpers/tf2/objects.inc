@@ -19,7 +19,7 @@ methodmap CBaseObject < CBaseCombatCharacter
 	*/
 	public CBaseObject( int entIndex )
 	{
-		return CBaseObject:CBaseCombatCharacter( entIndex );
+		return view_as<CBaseObject>( new CBaseCombatCharacter( entIndex ) );
 	}
 
 	/**
@@ -27,7 +27,7 @@ methodmap CBaseObject < CBaseCombatCharacter
 	*/
 	property CTFPlayer Builder
 	{
-		public get() { return CTFPlayer:this.GetPropEnt( Prop_Send, "m_hBuilder" ); }
+		public get() { return view_as<CTFPlayer>( this.GetPropEnt( Prop_Send, "m_hBuilder" ) ); }
 	}
 
 	/**

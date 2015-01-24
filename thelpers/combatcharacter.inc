@@ -21,7 +21,7 @@ methodmap CBaseCombatCharacter < CBaseAnimating
 	*/
 	public CBaseCombatCharacter( int entIndex )
 	{
-		return CBaseCombatCharacter:CBaseAnimating( entIndex );
+		return view_as<CBaseCombatCharacter>( new CBaseAnimating( entIndex ) );
 	}
 
 
@@ -30,6 +30,6 @@ methodmap CBaseCombatCharacter < CBaseAnimating
 	*/
 	property CBaseCombatWeapon ActiveWeapon
 	{
-		public get() { return CBaseCombatWeapon:this.GetPropEnt( Prop_Send, "m_hActiveWeapon" ); }
+		public get() { return view_as<CBaseCombatWeapon>( this.GetPropEnt( Prop_Send, "m_hActiveWeapon" ) ); }
 	}
 };

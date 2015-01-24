@@ -37,16 +37,11 @@ enum SolidFlags_t
 };
 
 
-/**
- * A constant entity instance that represents an invalid entity.
-*/
-const CBaseEntity INVALID_ENTITY = CBaseEntity:INVALID_ENT_REFERENCE;
-
 
 /**
  * Represents the base of the game entity hierarchy in the source engine
 */
-methodmap CBaseEntity
+methodmap CBaseEntity __nullable__
 {
 	/**
 	 * Create an instance of the CBaseEntity methodmap from an entity index
@@ -57,13 +52,13 @@ methodmap CBaseEntity
 	public CBaseEntity( int entIndex )
 	{
 		if ( !IsValidEntity( entIndex ) )
-			return INVALID_ENTITY;
+			return null;
 
 		// to support logical ents, which are passed through certain forwards and callbacks as ent refs (!) rather than indexes
 		// we have to first convert the reference to an actual index. this will no-op when given an index rather than a ref
 		entIndex = EntRefToEntIndex( entIndex );
 
-		return CBaseEntity:EntIndexToEntRef( entIndex );
+		return view_as<CBaseEntity>( EntIndexToEntRef( entIndex ) );
 	}
 
 	/**
@@ -72,14 +67,14 @@ methodmap CBaseEntity
 	*/
 	property int Index
 	{
-		public get() { return EntRefToEntIndex( _:this ); }
+		public get() { return EntRefToEntIndex( view_as<int>( this ) ); }
 	}
 	/**
 	 * Gets the entity reference of this entity instance.
 	*/
 	property int Ref
 	{
-		public get() { return _:this; }
+		public get() { return view_as<int>( this ); }
 	}
 
 	/**
@@ -124,7 +119,7 @@ methodmap CBaseEntity
 	public CBaseEntity GetPropEnt( PropType propType, const char[] propName, int element = 0 )
 	{
 		int entIndex = GetEntPropEnt( this.Ref, propType, propName, element );
-		return CBaseEntity( entIndex );
+		return new CBaseEntity( entIndex );
 	}
 	/**
 	 * Returns a float vector sendprop or datamap value.
@@ -250,16 +245,16 @@ methodmap CBaseEntity
 	*/
 	property SolidType_t SolidType
 	{
-		public get() { return SolidType_t:this.GetProp( Prop_Send, "m_nSolidType" ); }
-		public set( SolidType_t solidType ) { this.SetProp( Prop_Send, "m_nSolidType", _:solidType ); }
+		public get() { return view_as<SolidType_t>( this.GetProp( Prop_Send, "m_nSolidType" ) ); }
+		public set( SolidType_t solidType ) { this.SetProp( Prop_Send, "m_nSolidType", view_as<int>( solidType ) ); }
 	}
 	/**
 	 * Gets or sets this entity's solid flags.
 	*/
 	property SolidFlags_t SolidFlags
 	{
-		public get() { return SolidFlags_t:this.GetProp( Prop_Send, "m_usSolidFlags" ); }
-		public set( SolidFlags_t solidFlags ) { this.SetProp( Prop_Send, "m_usSolidFlags", _:solidFlags ); }
+		public get() { return view_as<SolidFlags_t>( this.GetProp( Prop_Send, "m_usSolidFlags" ) ); }
+		public set( SolidFlags_t solidFlags ) { this.SetProp( Prop_Send, "m_usSolidFlags", view_as<int>( solidFlags ) ); }
 	}
 
 	/**
@@ -501,15 +496,18 @@ methodmap CBaseEntity
 	 * Invokes a named entity input method on this entity. After completion, the global variant is re-initialized.
 	 *
 	 * @param input			The named input method to activate.
-	 * @param activator		The entity which initiated the sequence of entity i/o, or INVALID_ENTITY for a NULL entity.
-	 * @param caller		The entity from which this event was sent, or INVALID_ENTITY for a NULL entity.
+	 * @param activator		The entity which initiated the sequence of entity i/o, or null for no entity.
+	 * @param caller		The entity from which this event was sent, or null for no entity.
 	 * @param outputId		The unique ID of the output that this input was fired from.
 	 *
 	 * @return		A boolean value indicating if this input was successfully handled.
 	*/
-	public bool AcceptInput( const char[] input, CBaseEntity activator = CBaseEntity:INVALID_ENT_REFERENCE, CBaseEntity caller = CBaseEntity:INVALID_ENT_REFERENCE, int outputId = 0 )
+	public bool AcceptInput( const char[] input, CBaseEntity activator = null, CBaseEntity caller = null, int outputId = 0 )
 	{
-		return AcceptEntityInput( this.Ref, input, activator.Ref, caller.Ref, outputId );
+		int activatorRef = activator == null ? -1 : activator.Ref;
+		int callerRef = caller == null ? -1 : caller.Ref;
+
+		return AcceptEntityInput( this.Ref, input, activatorRef, callerRef, outputId );
 	}
 
 	/**

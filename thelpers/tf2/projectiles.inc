@@ -19,7 +19,7 @@ methodmap CTFBaseRocket < CBaseAnimating
 	*/
 	public CTFBaseRocket( int entIndex )
 	{
-		return CTFBaseRocket:CBaseAnimating( entIndex );
+		return view_as<CTFBaseRocket>( new CBaseAnimating( entIndex ) );
 	}
 
 

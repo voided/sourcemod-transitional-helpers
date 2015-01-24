@@ -27,7 +27,7 @@ methodmap CBaseCombatWeapon < THELPERS_COMBATWEAPON_DERIVED_FROM
 	*/
 	public CBaseCombatWeapon( int entIndex )
 	{
-		return CBaseCombatWeapon:CBaseAnimating( entIndex );
+		return view_as<CBaseCombatWeapon>( new CBaseAnimating( entIndex ) );
 	}
 
 
