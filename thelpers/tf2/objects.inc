@@ -90,6 +90,14 @@ methodmap CBaseObject < CBaseCombatCharacter
 	}
 
 	/**
+	 * Is this object being deployed after being carried?
+	*/
+	property bool IsCarryDeployed
+	{
+		public get() { return this.GetProp( Prop_Send, "m_bCarryDeploy" ) == 1; }
+	}
+
+	/**
 	 * Gets a float representing the percent that this object is constructed.
 	*/
 	property float PercentConstructed
