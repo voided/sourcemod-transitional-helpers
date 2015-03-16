@@ -19,7 +19,7 @@ methodmap CTFPlayer < CBasePlayer
 	*/
 	public CTFPlayer( int clientIndex )
 	{
-		return view_as<CTFPlayer>( CBasePlayer( clientIndex ) );
+		return view_as<CTFPlayer>( new CBasePlayer( clientIndex ) );
 	}
 
 
