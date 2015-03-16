@@ -26,7 +26,7 @@ methodmap CBasePlayer < CBaseCombatCharacter
 			return null;
 		}
 		
-		return new CBaseCombatCharacter( clientIndex );
+		return view_as<CBasePlayer>( new CBaseCombatCharacter( clientIndex ) );
 	}
 
 
@@ -401,11 +401,11 @@ methodmap CBasePlayer < CBaseCombatCharacter
 stock CBasePlayer Player_FromUserId( int userid )
 {
 	int clientIndex = GetClientOfUserId( userid );
-	return CBasePlayer( clientIndex );
+	return new CBasePlayer( clientIndex );
 }
 
 stock CBasePlayer Player_FromSerial( int serial )
 {
 	int clientIndex = GetClientFromSerial( serial );
-	return CBasePlayer( clientIndex );
+	return new CBasePlayer( clientIndex );
 }
