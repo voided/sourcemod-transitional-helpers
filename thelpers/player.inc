@@ -194,6 +194,7 @@ methodmap CBasePlayer < CBaseCombatCharacter
 
 	/**
 	 * Gets the Steam ID string of this player.
+	 *
 	 * @param authType		Auth id type and format to use.
 	 * @param buffer		The character buffer to copy the Steam ID to.
 	 * @param maxBuffer		The maximum size of the input buffer.
