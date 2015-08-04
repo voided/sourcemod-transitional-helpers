@@ -22,7 +22,7 @@ public void OnClientPutInServer( int client )
   CBasePlayer player = new CBasePlayer( client );
   
   char steamId[ 128 ];
-  player.GetSteamID( steamId, sizeof( steamId ) );
+  player.GetSteamID( AuthId_Steam2, steamId, sizeof( steamId ) );
   
   PrintToServer( "%N's steam id: %s", player.Index, steamId );
   
