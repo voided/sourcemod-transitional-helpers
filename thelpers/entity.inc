@@ -275,6 +275,13 @@ methodmap CBaseEntity __nullable__
 		public set( RenderMode mode ) { SetEntityRenderMode( this.Ref, mode ); }
 	}
 
+	/**
+	 * Gets this entity's hammer id.
+	*/
+	property int HammerID
+	{
+		public get() { return this.GetProp( Prop_Data, "m_iHammerID" ); }
+	}
 
 	/**
 	 * Gets the vector origin of the entity in local space (relative to the parent).
