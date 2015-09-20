@@ -9,7 +9,7 @@
 /**
  * Entity class that all TF2 projectile entities derive from.
 */
-methodmap CTFBaseRocket < CBaseAnimating
+methodmap CTFBaseRocket __nullable__ < CBaseAnimating
 {
 	/**
 	 * Create a CTFBaseRocket instance from the given entity index.

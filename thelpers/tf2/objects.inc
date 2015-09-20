@@ -9,7 +9,7 @@
 /**
  * Entity methodmap that represents all object entities in TF2 (sentries, dispensers, etc)
 */
-methodmap CBaseObject < CBaseCombatCharacter
+methodmap CBaseObject __nullable__ < CBaseCombatCharacter
 {
 	/**
 	 * Create a CBaseObject instance from the given entity index.

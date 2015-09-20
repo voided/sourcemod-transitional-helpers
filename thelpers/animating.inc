@@ -10,7 +10,7 @@
  * Entity methodmap from which all entities with models or animations inherit.
  * This methodmap also implements functionality related to CBaseAnimatingOverlay.
 */
-methodmap CBaseAnimating < CBaseEntity
+methodmap CBaseAnimating __nullable__ < CBaseEntity
 {
 	/**
 	 * Create a CBaseAnimating instance from the given entity index.

@@ -10,7 +10,7 @@
 /**
  * Entity methodmap from which all players derive from.
 */
-methodmap CBasePlayer < CBaseCombatCharacter
+methodmap CBasePlayer __nullable__ < CBaseCombatCharacter
 {
 	/**
 	 * Create a CBasePlayer instance from the given client index.

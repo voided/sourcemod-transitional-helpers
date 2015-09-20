@@ -9,8 +9,7 @@
 enum CBasePlayer: {};
 
 
-
-methodmap CEconEntity < CBaseAnimating
+methodmap CEconEntity __nullable__ < CBaseAnimating
 {
 	/**
 	 * Create a CEconEntity instance from the given entity index.

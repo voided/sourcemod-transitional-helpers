@@ -11,7 +11,7 @@
 /**
  * Entity methodmap that all combat characters derive from, including NPCs and players.
 */
-methodmap CBaseCombatCharacter < CBaseAnimating
+methodmap CBaseCombatCharacter __nullable__ < CBaseAnimating
 {
 	/**
 	 * Create a CBaseCombatCharacter instance from the given entity index.

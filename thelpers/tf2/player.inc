@@ -9,7 +9,7 @@
 /**
  * Entity class that all TF2 player entities derive from.
 */
-methodmap CTFPlayer < CBasePlayer
+methodmap CTFPlayer __nullable__ < CBasePlayer
 {
 	/**
 	 * Create a CTFPlayer instance from the given client index.

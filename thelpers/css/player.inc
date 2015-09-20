@@ -9,7 +9,7 @@
 /**
  * Entity class that all CS:S player entities derive from.
 */
-methodmap CCSPlayer < CBasePlayer
+methodmap CCSPlayer __nullable__ < CBasePlayer
 {
 	/**
 	 * Create a CCSPlayer instance from the given client index.
