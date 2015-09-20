@@ -36,6 +36,7 @@ enum SolidFlags_t
 	FSOLID_MAX_BITS	= 10
 };
 
+const CBaseEntity INVALID_ENTITY = view_as<CBaseEntity>( INVALID_ENT_REFERENCE );
 
 
 /**
@@ -52,7 +53,7 @@ methodmap CBaseEntity __nullable__
 	public CBaseEntity( int entIndex )
 	{
 		if ( !IsValidEntity( entIndex ) )
-			return null;
+			return INVALID_ENTITY;
 
 		// to support logical ents, which are passed through certain forwards and callbacks as ent refs (!) rather than indexes
 		// we have to first convert the reference to an actual index. this will no-op when given an index rather than a ref
@@ -509,10 +510,10 @@ methodmap CBaseEntity __nullable__
 	 *
 	 * @return		A boolean value indicating if this input was successfully handled.
 	*/
-	public bool AcceptInput( const char[] input, CBaseEntity activator = null, CBaseEntity caller = null, int outputId = 0 )
+	public bool AcceptInput( const char[] input, CBaseEntity activator = view_as<CBaseEntity>( INVALID_ENT_REFERENCE ), CBaseEntity caller = view_as<CBaseEntity>( INVALID_ENT_REFERENCE ), int outputId = 0 )
 	{
-		int activatorRef = activator == null ? -1 : activator.Ref;
-		int callerRef = caller == null ? -1 : caller.Ref;
+		int activatorRef = activator.IsValid ? activator.Ref : -1;
+		int callerRef = caller.IsValid ? caller.Ref : -1;
 
 		return AcceptEntityInput( this.Ref, input, activatorRef, callerRef, outputId );
 	}

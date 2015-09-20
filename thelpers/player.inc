@@ -23,7 +23,7 @@ methodmap CBasePlayer < CBaseCombatCharacter
 		if ( clientIndex == 0 )
 		{
 			// special case for client 0 as that is the worldspawn entity, and technically not a valid client
-			return null;
+			return view_as<CBasePlayer>( INVALID_ENTITY );
 		}
 		
 		return view_as<CBasePlayer>( new CBaseCombatCharacter( clientIndex ) );

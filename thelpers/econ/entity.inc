@@ -8,8 +8,6 @@
 
 enum CBasePlayer: {};
 
-// into the record books we go for crimes against sourcepawn
-methodmap CBasePlayerNullableHack __nullable__ {};
 
 
 methodmap CEconEntity < CBaseAnimating
@@ -91,7 +89,7 @@ methodmap CEconEntity < CBaseAnimating
 #endif
 		}
 
-		return view_as<CBasePlayer>( view_as<CBasePlayerNullableHack>( null ) );
+		return view_as<CBasePlayer>( INVALID_ENTITY );
 	}
 
 };
