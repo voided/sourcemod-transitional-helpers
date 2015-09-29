@@ -41,7 +41,7 @@ methodmap CCSPlayer __nullable__ < CBasePlayer
 	 *
 	 * @return		The number of non-null bytes written to output buffer.
 	*/
-	public int GetClanTag( char buffer[], int maxBuffer )
+	public int GetClanTag( char[] buffer, int maxBuffer )
 	{
 		return CS_GetClientClanTag( this.Index, buffer, maxBuffer );
 	}
