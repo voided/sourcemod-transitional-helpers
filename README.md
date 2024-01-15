@@ -10,7 +10,7 @@ Include thelpers:
 
 ```sourcepawn
 #define GAME_TF2 // required to pull in tf2 related helpers
-#include <thelpers/thelpers>
+#include <thelpers>
 ```
 
 Go wild:
@@ -44,7 +44,7 @@ The API aims to be game-agnostic where possible to support all possible games. H
 
 Currently only TF2 and some CS:S specific additions have been implemented (enabled with the `GAME_TF2` and `GAME_CSS` defines respectively), but pull requests for other games are welcome!
 
-If your game uses econ entities, you can enable econ functionality with `#define GAME_ECON`.
+If your game uses econ entities, you can enable econ functionality with `#define GAME_ECON`. This is defined by default for games that have econ entities.
 
 ## Considerations
 

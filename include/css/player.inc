@@ -63,3 +63,18 @@ methodmap CCSPlayer __nullable__ < CBasePlayer
 		CS_RespawnPlayer( this.Index );
 	}
 };
+
+
+
+/**
+ * Helper function to get a CSSPlayer wrapper from a player of the given UserID.
+*/
+stock CSSPlayer CSSPlayer_FromUserId( int userid )
+{
+	return view_as<CSSPlayer>(Player_FromUserId( userid ));
+}
+
+stock CSSPlayer CSSPlayer_FromSerial( int serial )
+{
+	return view_as<CSSPlayer>(Player_FromUserId( serial ));
+}
