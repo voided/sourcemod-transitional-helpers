@@ -17,20 +17,20 @@ methodmap CGameRules < CBaseEntity
 	*/
 	public static CGameRules GetEntity()
 	{
-		CBaseEntity gameRulesEnt = null;
+		CBaseEntity gameRulesEnt = INVALID_ENTITY;
 
 #if defined GAME_TF2
-		gameRulesEnt = CBaseEntity.FindByClassname( null, "tf_gamerules" );
+		gameRulesEnt = CBaseEntity.FindByClassname( INVALID_ENTITY, "tf_gamerules" );
 #elseif defined GAME_CSS || defined GAME_CSGO
-		gameRulesEnt = CBaseEntity.FindByClassname( null, "cs_gamerules" );
+		gameRulesEnt = CBaseEntity.FindByClassname( INVALID_ENTITY, "cs_gamerules" );
 #elseif defined GAME_DODS
-		gameRulesEnt = CBaseEntity.FindByClassname( null, "dod_gamerules" );
+		gameRulesEnt = CBaseEntity.FindByClassname( INVALID_ENTITY, "dod_gamerules" );
 #elseif defined GAME_HL2MP
-		gameRulesEnt = CBaseEntity.FindByClassname( null, "hl2mp_gamerules" );
+		gameRulesEnt = CBaseEntity.FindByClassname( INVALID_ENTITY, "hl2mp_gamerules" );
 #elseif defined GAME_L4D || defined GAME_L4D2
-		gameRulesEnt = CBaseEntity.FindByClassname( null, "terror_gamerules" );
+		gameRulesEnt = CBaseEntity.FindByClassname( INVALID_ENTITY, "terror_gamerules" );
 #elseif defined GAME_DOTA
-		gameRulesEnt = CBaseEntity.FindByClassname( null, "dota_gamerules" );
+		gameRulesEnt = CBaseEntity.FindByClassname( INVALID_ENTITY, "dota_gamerules" );
 #else
 		ThrowError( "CGameRules.GetEntity is not supported for this game!" );
 #endif
