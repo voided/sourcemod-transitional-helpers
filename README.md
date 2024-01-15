@@ -48,7 +48,7 @@ If your game uses econ entities, you can enable econ functionality with `#define
 
 ## Considerations
 
-- This library won't have much active development, but PRs are still welcome.
+- This library likely won't have much active development, but PRs are still welcome.
 
 ### Methodmaps, `null`, & `INVALID_ENTITY`
 
