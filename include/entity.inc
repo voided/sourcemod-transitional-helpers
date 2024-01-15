@@ -504,13 +504,13 @@ methodmap CBaseEntity __nullable__
 	 * Invokes a named entity input method on this entity. After completion, the global variant is re-initialized.
 	 *
 	 * @param input			The named input method to activate.
-	 * @param activator		The entity which initiated the sequence of entity i/o, or null for no entity.
-	 * @param caller		The entity from which this event was sent, or null for no entity.
+	 * @param activator		The entity which initiated the sequence of entity i/o, or `INVALID_ENTITY` for no entity.
+	 * @param caller		The entity from which this event was sent, or `INVALID_ENTITY` for no entity.
 	 * @param outputId		The unique ID of the output that this input was fired from.
 	 *
 	 * @return		A boolean value indicating if this input was successfully handled.
 	*/
-	public bool AcceptInput( const char[] input, CBaseEntity activator = view_as<CBaseEntity>( INVALID_ENT_REFERENCE ), CBaseEntity caller = view_as<CBaseEntity>( INVALID_ENT_REFERENCE ), int outputId = 0 )
+	public bool AcceptInput( const char[] input, CBaseEntity activator = INVALID_ENTITY, CBaseEntity caller = INVALID_ENTITY, int outputId = 0 )
 	{
 		int activatorRef = activator.IsValid ? activator.Ref : -1;
 		int callerRef = caller.IsValid ? caller.Ref : -1;
