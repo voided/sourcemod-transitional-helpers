@@ -49,3 +49,11 @@ If your game uses econ entities, you can enable econ functionality with `#define
 ## Considerations
 
 - This library won't have much active development, but PRs are still welcome.
+
+### Methodmaps, `null`, & `INVALID_ENTITY`
+
+The thelpers methodmaps originally "creatively" utilized the functionality of `__nullable__` to allow comparisons with `null` to check entity validity.
+
+SourceMod has since updated the syntax to disallow this, so the supported way forward is to perform comparison checks against the `INVALID_ENTITY` constant in this library.
+
+While `__nullable__` now has no useful use in thelpers, the methodmap definitions will remain nullable to support existing consumers who are using the `new ...()` syntax to construct the methodmaps.
