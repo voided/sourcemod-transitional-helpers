@@ -4,7 +4,6 @@ A set of helper include files for cleverly (or abusively) working with the SM tr
 
 These helpers define a hierarchical structure of methodmaps that attempt to emulate the class hierarchy of Source engine entities. Modders should feel right at home by seeing familiar class names such as `CBaseCombatWeapon`, `CBasePlayer`, etc.
 
-
 ## Usage
 
 Include thelpers:
@@ -13,28 +12,27 @@ Include thelpers:
 #define GAME_TF2 // required to pull in tf2 related helpers
 #include <thelpers/thelpers>
 ```
-  
+
 Go wild:
 
 ```sourcepawn
 public void OnClientPutInServer( int client )
 {
   CBasePlayer player = new CBasePlayer( client );
-  
+
   char steamId[ 128 ];
   player.GetSteamID( AuthId_Steam2, steamId, sizeof( steamId ) );
-  
+
   PrintToServer( "%N's steam id: %s", player.Index, steamId );
-  
+
   // do some tf2 specific stuff
   CTFPlayer tfPlayer = view_as<CTFPlayer>( player ); // "downcast" to a CTFPlayer object
   tfPlayer.SetClass( TFClassType_Medic );
-  
+
   // we didn't like them anyway
   ServerCommand( "sm_kick #%d", player.UserID );
 }
 ```
-
 
 ## Documentation
 
@@ -48,8 +46,6 @@ Currently only TF2 and some CS:S specific additions have been implemented (enabl
 
 If your game uses econ entities, you can enable econ functionality with `#define GAME_ECON`.
 
-
 ## Considerations
 
-- This library will be changing rapidly and often. Expect breaking changes.
-- SM's transitional syntax is experimental and thus has the potential to break us. Expect more breaking changes.
+- This library won't have much active development, but PRs are still welcome.
