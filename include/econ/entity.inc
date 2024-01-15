@@ -62,30 +62,13 @@ methodmap CEconEntity __nullable__ < CBaseAnimating
 	{
 		for ( int client = 1 ; client <= MaxClients ; ++client )
 		{
-			if ( !IsClientInGame( client ) )
-				continue;
-
-			int accountId = GetSteamAccountID( client );
-
-			if ( accountId == 0 )
-				continue; // skip clients with no auth or steamid
-
-			if ( accountId == this.AccountID )
-			{
-				// NOTE: this must return the ref, since we can't construct a CBasePlayer here
-				return view_as<CBasePlayer>( EntIndexToEntRef( client ) );
-			}
-
-#if 0
-			// see SM bug #6188 for why we can't do this just yet
-			CBasePlayer player = CBasePlayer( client );
+			CBasePlayer player = new CBasePlayer( client );
 
 			if ( !player.IsInGame )
 				continue;
 
 			if ( player.GetAccountID() == this.AccountID )
 				return player;
-#endif
 		}
 
 		return view_as<CBasePlayer>( INVALID_ENTITY );
