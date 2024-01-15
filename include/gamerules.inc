@@ -12,8 +12,10 @@
 */
 methodmap CGameRules < CBaseEntity
 {
+	// this entity is intentionally non-nullable, the only way to retrieve an instance of gamerules is through `GetEntity`.
+
 	/**
-	 * Returns the gamerules proxy entity for this game, or null if the entity has not been created yet.
+	 * Returns the gamerules proxy entity for this game, or `INVALID_ENTITY` if the entity has not been created yet.
 	*/
 	public static CGameRules GetEntity()
 	{
