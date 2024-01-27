@@ -17,7 +17,7 @@
 /**
  * Entity methodmap from which all weapon entities derive from.
 */
-methodmap CBaseCombatWeapon < THELPERS_COMBATWEAPON_DERIVED_FROM
+methodmap CBaseCombatWeapon __nullable__ < THELPERS_COMBATWEAPON_DERIVED_FROM
 {
 	/**
 	 * Create a CBaseCombatWeapon instance from the given entity index.
@@ -27,7 +27,7 @@ methodmap CBaseCombatWeapon < THELPERS_COMBATWEAPON_DERIVED_FROM
 	*/
 	public CBaseCombatWeapon( int entIndex )
 	{
-		return view_as<CBaseCombatWeapon>( new CBaseAnimating( entIndex ) );
+		return view_as<CBaseCombatWeapon>( new THELPERS_COMBATWEAPON_DERIVED_FROM( entIndex ) );
 	}
 
 

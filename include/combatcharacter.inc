@@ -32,4 +32,27 @@ methodmap CBaseCombatCharacter __nullable__ < CBaseAnimating
 	{
 		public get() { return view_as<CBaseCombatWeapon>( this.GetPropEnt( Prop_Send, "m_hActiveWeapon" ) ); }
 	}
+
+
+	/**
+	 * Gets the weapon entity in a player's specific weapon slot.
+	 * 
+	 * @param slot		The slot index to retrieve the weapon of.
+	 * 
+	 * @return	The weapon entity in the player's slot.
+	*/
+	public CBaseCombatWeapon GetWeaponInSlot( int slot )
+	{
+		return new CBaseCombatWeapon( GetPlayerWeaponSlot( this.Index, slot ) );
+	}
+
+	/**
+	 * Equips the player with the provided weapon.
+	 * 
+	 * @param weapon	The weapon to equip onto theplayer.
+	 */
+	public void EquipWeapon( CBaseCombatWeapon weapon )
+	{
+		EquipPlayerWeapon( this.Index, weapon.Index );
+	}
 };
