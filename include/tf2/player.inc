@@ -88,6 +88,17 @@ methodmap CTFPlayer __nullable__ < CBasePlayer
 		SetVariantString( model );
 		this.AcceptInput( "SetCustomModel" );
 	}
+
+
+	/**
+	 * Removes the player's weapon specified by the given slot.
+	 * 
+	 * @param slot		The slot index to remove the weapon of.
+	*/
+	public void RemoveWeaponInSlot( int slot )
+	{
+		TF2_RemoveWeaponSlot( this.Index, slot );
+	}
 };
 
 
