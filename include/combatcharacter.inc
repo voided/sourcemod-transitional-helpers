@@ -26,20 +26,21 @@ methodmap CBaseCombatCharacter __nullable__ < CBaseAnimating
 
 
 	/**
-	 * Gets the active weapon of this entity instance.
+	 * Gets or sets the active weapon of this combat character instance.
 	*/
 	property CBaseCombatWeapon ActiveWeapon
 	{
 		public get() { return view_as<CBaseCombatWeapon>( this.GetPropEnt( Prop_Send, "m_hActiveWeapon" ) ); }
+		public set( CBaseCombatWeapon weapon ) { this.SetPropEnt( Prop_Send, "m_hActiveWeapon", weapon ); }
 	}
 
 
 	/**
-	 * Gets the weapon entity in a player's specific weapon slot.
+	 * Gets the weapon entity in a combat character's specific weapon slot.
 	 * 
 	 * @param slot		The slot index to retrieve the weapon of.
 	 * 
-	 * @return	The weapon entity in the player's slot.
+	 * @return	The weapon entity in the combat character's slot.
 	*/
 	public CBaseCombatWeapon GetWeaponInSlot( int slot )
 	{
@@ -47,9 +48,9 @@ methodmap CBaseCombatCharacter __nullable__ < CBaseAnimating
 	}
 
 	/**
-	 * Equips the player with the provided weapon.
+	 * Equips the combat character with the provided weapon.
 	 * 
-	 * @param weapon	The weapon to equip onto theplayer.
+	 * @param weapon	The weapon to equip onto the combat character.
 	 */
 	public void EquipWeapon( CBaseCombatWeapon weapon )
 	{
