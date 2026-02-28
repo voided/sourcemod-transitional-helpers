@@ -1,9 +1,9 @@
 
-#if defined __thelpers_css_player_included
+#if defined _thelpers_css_player_included
 	#endinput
 #endif
 
-#define __thelpers_css_player_included
+#define _thelpers_css_player_included
 
 
 /**

@@ -1,9 +1,9 @@
 
-#if defined __thelpers_tf2_included
+#if defined _thelpers_tf2_included
 	#endinput
 #endif
 
-#define __thelpers_tf2_included
+#define _thelpers_tf2_included
 
 
 // tf2 related includes

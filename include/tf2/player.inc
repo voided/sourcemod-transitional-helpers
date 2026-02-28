@@ -1,9 +1,9 @@
 
-#if defined __thelpers_tf2_player_included
+#if defined _thelpers_tf2_player_included
 	#endinput
 #endif
 
-#define __thelpers_tf2_player_included
+#define _thelpers_tf2_player_included
 
 
 /**
@@ -98,6 +98,16 @@ methodmap CTFPlayer __nullable__ < CBasePlayer
 	public void RemoveWeaponInSlot( int slot )
 	{
 		TF2_RemoveWeaponSlot( this.Index, slot );
+	}
+
+	/**
+	 * Checks whether or not the player is in a given condition.
+	 * 
+	 * @parma condition		The condition to check for.
+	 */
+	public bool InCondition( TFCond condition )
+	{
+		return TF2_IsPlayerInCondition( this.Index, condition );
 	}
 };
 

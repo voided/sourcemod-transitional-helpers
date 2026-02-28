@@ -1,9 +1,9 @@
 
-#if defined __thelpers_combatcharacter_included
+#if defined _thelpers_combatcharacter_included
 	#endinput
 #endif
 
-#define __thelpers_combatcharacter_included
+#define _thelpers_combatcharacter_included
 
 // CBaseCombatCharacter technically derives from CBaseFlex, but there likely isn't much that's useful from serverside plugins
 // may revisit implementing flex if the need arises

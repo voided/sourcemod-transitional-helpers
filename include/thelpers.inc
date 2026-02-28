@@ -3,11 +3,11 @@
  * SM transitional API helpers
  */
 
-#if defined __thelpers_included
+#if defined _thelpers_included
 	#endinput
 #endif
 
-#define __thelpers_included
+#define _thelpers_included
 
 
 // include what thelpers requires

@@ -1,9 +1,9 @@
 
-#if defined __thelpers_client_included
+#if defined _thelpers_client_included
 	#endinput
 #endif
 
-#define __thelpers_client_included
+#define _thelpers_client_included
 
 
 

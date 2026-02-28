@@ -1,9 +1,9 @@
 
-#if defined __thelpers_gamerules_included
+#if defined _thelpers_gamerules_included
 	#endinput
 #endif
 
-#define __thelpers_gamerules_included
+#define _thelpers_gamerules_included
 
 
 /**

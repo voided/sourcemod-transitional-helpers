@@ -1,9 +1,9 @@
 
-#if defined __thelpers_entity_included
+#if defined _thelpers_entity_included
 	#endinput
 #endif
 
-#define __thelpers_entity_included
+#define _thelpers_entity_included
 
 
 // todo: does solidtype differ among games?

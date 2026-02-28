@@ -1,9 +1,9 @@
 
-#if defined __thelpers_combatweapon_included
+#if defined _thelpers_combatweapon_included
 	#endinput
 #endif
 
-#define __thelpers_combatweapon_included
+#define _thelpers_combatweapon_included
 
 
 // games which use econ have their weapons derive from CEconEntity

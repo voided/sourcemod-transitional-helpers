@@ -1,9 +1,9 @@
 
-#if defined __thelpers_econ_entity_included
+#if defined _thelpers_econ_entity_included
 	#endinput
 #endif
 
-#define __thelpers_econ_entity_included
+#define _thelpers_econ_entity_included
 
 
 enum CBasePlayer: {};

@@ -9,7 +9,7 @@
  * 
  */
 
-#if defined __thelpers_root_included
+#if defined _thelpers_root_included
 	#endinput
 #endif
 
@@ -17,4 +17,4 @@
 #include "include/thelpers.inc"
 
 
-#define __thelpers_root_included
+#define _thelpers_root_included
